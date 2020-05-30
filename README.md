@@ -18,6 +18,8 @@ The `data\_plane` directory contains `code designed for Intel's [Barefoot Tofino
 The `control\_plane` directory contains the control plane rules you need to install to enable pruning for the queries implemented in the data plane. They are in a markdown file with separate sections for each query. The rules in each section are intended to be installed in the same order they are presented.
 
 ### Host
-The `host` directory contains code used to serialize / deserialize any given list of values into a cheetah packet. This code is generic and does not make any assumptions regarding the query engine you are using. You can make it work with any kind of query engine or key value store as long as you write some patchwork code to allow Cheetah's packet serializer / deserializer to understand the file format(s) of the system you are integrating Cheetah with.
+The `host` directory contains code used to serialize / deserialize any given list of values into a cheetah packet. This code is generic and does not make any assumptions regarding the query engine you are using. You can make it work with any kind of query engine or key value store as long as you write some patchwork code to allow Cheetah's packet serializer / deserializer to understand the file format(s) of the system you are integrating Cheetah with. Cheetah's packet serializer and deserializer is optimized using Intel's Dataplane Development Kit ([DPDK](https://www.dpdk.org/)). Therefore, you can only run this code on a DPDK-compliant NIC. For our evaluation, we used version 18.11 of Intel's DPDK along with Mellanox NICs.
 
+
+## Deploying Cheetah
 You need a proprietary compiler, the P4 compiler that is packaged with Intel's Barefoot Software Development Environment, to compile this code 
