@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+Cheetah is a system that optimizes queries using programmable switches.
 
 ## Related publications 
 * Cheetah: Accelerating Database Queries with Switch Pruning (ACM SIGMOD 2020) \[[link](https://dl.acm.org/doi/10.1145/3318464.3389698)\]
@@ -47,4 +48,5 @@ We have included the default implementation of Cheetah's queries. However, to ge
 - For TOP-N, you can increase or decrease the number of cutoffs (see our Arxiv report for more details on this) by modifying the definition (or the number of times you use) the `GENERATE_PACKET_COUNTER_ALU` and `GENERATE_TOPN_MIN_ALU` macros
 - For DISTINCT, JOIN and GROUP-BY, you can try changing the hash function(s) you use; our implementation uses CRC32 with offsets by default
 
-
+## Question and discussion
+Please feel free to use the Cheetah project mailing list: harvard-cns-cheetah AT googlegroups DOT com. However, this is a low volume mailing list. You are more likely to receive a helpful response if your question is specific, self-contained and concise.
