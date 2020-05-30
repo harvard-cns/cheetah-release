@@ -43,5 +43,8 @@ We have included the default implementation of Cheetah's queries. However, to ge
 
 - For DISTINCT, you can increase or decrease the number of LRU caches (see the `cheetah_lru_import` files) used or assign more memory to each cache (tune `LRU_WIDTH`)
 - For JOIN, you can increase or decrease the number of bloom filter blocks (see the definition for `CREATE_BLOOM`) or the memory assigned for each block (tune `REGISTER_COUNT_MAX`)
+- For SKYLINE, you can change the heuristic you use for pruning (see our Arxiv report for more details on this) by modifying `alu_heuristic`
+- For TOP-N, you can increase or decrease the number of cutoffs (see our Arxiv report for more details on this) by modifying the definition (or the number of times you use) the `GENERATE_PACKET_COUNTER_ALU` and `GENERATE_TOPN_MIN_ALU` macros
+- For DISTINCT, JOIN and GROUP-BY, you can try changing the hash function(s) you use; our implementation uses CRC32 with offsets by default
 
 
