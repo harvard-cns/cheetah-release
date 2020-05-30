@@ -12,14 +12,19 @@
 The code in this repository is classified into three categories.
 
 ### Data Plane
-The `data\_plane` directory contains `code designed for Intel's [Barefoot Tofino](https://barefootnetworks.com/products/brief-tofino/) programmable switch. The code is written in a Tofino-specific variant of the P4-14 programming language. See [here](https://p4.org/) for more information on standard P4. 
+The `data_plane` directory contains `code designed for Intel's [Barefoot Tofino](https://barefootnetworks.com/products/brief-tofino/) programmable switch. The code is written in a Tofino-specific variant of the P4-14 programming language. See [here](https://p4.org/) for more information on standard P4. 
 
 ### Control Plane
-The `control\_plane` directory contains the control plane rules you need to install to enable pruning for the queries implemented in the data plane. They are in a markdown file with separate sections for each query. The rules in each section are intended to be installed in the same order they are presented.
+The `control_plane` directory contains the control plane rules you need to install to enable pruning for the queries implemented in the data plane. They are in a markdown file with separate sections for each query. The rules in each section are intended to be installed in the same order they are presented.
 
 ### Host
 The `host` directory contains code used to serialize / deserialize any given list of values into a cheetah packet. This code is generic and does not make any assumptions regarding the query engine you are using. You can make it work with any kind of query engine or key value store as long as you write some patchwork code to allow Cheetah's packet serializer / deserializer to understand the file format(s) of the system you are integrating Cheetah with. Cheetah's packet serializer and deserializer is optimized using Intel's Dataplane Development Kit ([DPDK](https://www.dpdk.org/)). Therefore, you can only run this code on a DPDK-compliant NIC. For our evaluation, we used version 18.11 of Intel's DPDK along with Mellanox NICs.
 
 
 ## Deploying Cheetah
-You need a proprietary compiler, the P4 compiler that is packaged with Intel's Barefoot Software Development Environment, to compile this code 
+
+You need a proprietary compiler, the P4 compiler that is packaged with Intel's Barefoot Software Development Environment, to compile this code regardless of whether or not you intend to run it on real hardware. This is why we have chosen to release the code under the MIT License instead of one of the GNU GPL family of licenses ([relevant](https://softwareengineering.stackexchange.com/questions/318503/can-i-release-software-under-the-gpl-if-it-must-be-built-with-a-proprietary-comp)).
+
+To deploy our implementation on hardware, we recommend using the first generation of Intel's Barefoot Tofino switches. We did not test Cheetah on the more recent Intel Barefoot Tofino 2 chip and do not know if our implementation of Cheetah is compatible with it. *Note that we have not included code required for TCP/IP forwarding and match-action table placement in our P4 scripts*. You will need to add your switch deployment's implementation TCP/IPF forwarding to the P4 scripts before you can deploy our implementation. Depending on your hardware, you may also need to add some code related to match-action table placement in order to be conformant with switch constraints (discussed in our ACM SIGMOD publication and Arxiv report).
+
+
