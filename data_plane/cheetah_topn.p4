@@ -1,3 +1,7 @@
+#include <tofino/intrinsic_metadata.p4>
+#include <tofino/constants.p4>
+#include <tofino/stateful_alu_blackbox.p4>
+
 header_type cheetah_t {
     fields {
         flowId : 16;
