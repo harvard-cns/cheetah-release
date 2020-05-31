@@ -13,7 +13,7 @@ Cheetah is a system that optimizes queries using programmable switches.
 The code in this repository is classified into three categories.
 
 ### Data Plane
-The `data_plane` directory contains `code designed for Intel's [Barefoot Tofino](https://barefootnetworks.com/products/brief-tofino/) programmable switch. The code is written in a Tofino-specific variant of the P4-14 programming language. See [here](https://p4.org/) for more information on standard P4. 
+The `data_plane` directory contains code designed for Intel's [Barefoot Tofino](https://barefootnetworks.com/products/brief-tofino/) programmable switch. The code is written in a Tofino-specific variant of the P4-14 programming language. See [here](https://p4.org/) for more information on standard P4. 
 
 ### Control Plane
 The `control_plane` directory contains the control plane rules you need to install to enable pruning for the queries implemented in the data plane. They are in a markdown file with separate sections for each query. The rules in each section are intended to be installed in the same order they are presented.
