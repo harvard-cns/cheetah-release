@@ -75,7 +75,7 @@ cheetah_aggregate_processing_distinct_init(const uint32_t size) {
 
   struct cheetah_aggregate_processing_distinct_state *state;
 
-  state = malloc(sizeof(struct cheetah_aggregate_processing_distinct_state));
+  state = calloc(1, sizeof(struct cheetah_aggregate_processing_distinct_state));
 
   state->size = size;
   state->current_entries = 0;
@@ -197,7 +197,7 @@ cheetah_aggregate_processing_groupby_init(const uint32_t size) {
 
   struct cheetah_aggregate_processing_groupby_state *state;
 
-  state = malloc(sizeof(struct cheetah_aggregate_processing_groupby_state));
+  state = calloc(1, sizeof(struct cheetah_aggregate_processing_groupby_state));
 
   state->size = size;
   state->current_entries = 0;

@@ -10,7 +10,7 @@ struct cheetah_join_state *cheetah_join_init(const uint64_t size,
   int rtn;
   struct cheetah_join_state *state;
 
-  state = malloc(sizeof(struct cheetah_join_state));
+  state = calloc(1, sizeof(struct cheetah_join_state));
   assert(state != NULL);
 
   state->entries = malloc(sizeof(struct cheetah_join_entry) * size);
